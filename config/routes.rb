@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root to: 'paintings#index'
+  resources :paintings do
+    resources :reviews, only: [:new, :create]
+    resources :requests, only: [:new, :create]
+  end
+  get '/requests/incoming', to: 'requests#incoming'
+  get '/requests/outgoing', to: 'requests#outgoing'
+  resources :requests, only: [:show, :update]
 end
