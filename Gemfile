@@ -4,8 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.6'
 
 
-# Cloudinary
+# Protect secret cloudinary code:
 gem 'dotenv-rails', groups: [:development, :test]
+# Cloudinary
+gem 'cloudinary', '~> 1.12.0'
 # Seed faker
 gem 'faker'
 # User login management

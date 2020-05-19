@@ -4,6 +4,7 @@
 <%= link_to 'Cancel', paintings_path, class: 'btn btn-secondary my-3' %>
 
 <%= simple_form_for(@painting) do |f| %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :name, label: "Name of painting", placeholder: "example: Starry Night" %>
     <%= f.input :dimensions, label: "Dimensions (in cm)", placeholder: "74 cm x 92 cm" %>
     <%= f.input :painter, label: "Artist", placeholder: "Van Gogh" %>
