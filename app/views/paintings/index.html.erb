@@ -1,6 +1,13 @@
 <div class="p-4">
+<p>
+  <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary mb-3' %>
+</p>
 
-<h1 class="mb-5">Paintings for rent:</h1>
+<p class="mb-4"><%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mb-5' %></p>
+
+<h1 class="mt-5 mb-4">Paintings for rent:</h1>
 
 <% @paintings.each do |painting| %>
   <%= link_to painting_path(painting), class: "painting" do%>
@@ -12,7 +19,5 @@
     </ul>
   <%end%>
 <% end %>
-
-<%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mt-5' %>
 
 </div>
