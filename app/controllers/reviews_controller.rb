@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def new
-    @paiting = Painting.find(params[:painting_id]) 
+    @painting = Painting.find(params[:painting_id]) 
     @review = Review.new
   end
 
