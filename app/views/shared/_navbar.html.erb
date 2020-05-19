@@ -23,6 +23,9 @@
             <%= link_to "Add Painting", new_painting_path, class: "dropdown-item" %>
             <%= link_to "My Profile", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Incoming Requests", requests_incoming_path, class: "dropdown-item" %>
+            <%= link_to "Outgoing Requests", requests_outgoing_path, class: "dropdown-item" %>
+            <%= link_to "List a Painting", new_painting_request_path, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
