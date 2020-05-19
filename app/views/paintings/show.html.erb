@@ -1,2 +1,7 @@
-<h1>Paintings#show</h1>
-<p>Find me in app/views/paintings/show.html.erb</p>
+<div class="p-4">
+<h1><%= @painting.name %></h1>
+<p>input painting info here</p>
+
+<%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-primary mt-3' %>
+<%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-warning mt-3' %>
+<%= link_to 'Back', paintings_path, class: 'btn btn-secondary mt-3' %>

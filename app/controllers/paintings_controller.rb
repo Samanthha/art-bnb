@@ -35,12 +35,12 @@ class PaintingsController < ApplicationController
   def destroy
     @painting = Painting.find(params[:id])
     @painting.destroy
+    redirect_to paintings_path
   end
 
   def delete
     @paintings = Painting.all
     @painting = Painting.find(params[:id])
-    redirect_to paintings_path
   end
 
   private
