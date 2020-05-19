@@ -1,16 +1,12 @@
-.navbar-art-bnb {
+.navbar-lewagon {
   justify-content: space-between;
   background: white;
-  height: 70px;
-  padding: 0px 30px;
-  display: flex;
-  align-items: center;
 }
 
-.navbar-art-bnb .navbar-collapse {
+.navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-art-bnb .navbar-brand img {
+.navbar-lewagon .navbar-brand img {
   width: 40px;
 }
