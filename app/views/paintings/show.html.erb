@@ -1,7 +1,62 @@
 <div class="p-4">
 <h1><%= @painting.name %></h1>
-<p>input painting info here</p>
+<p><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-success my-3" %></p>
+<p>Dimensions: <%= @painting.dimensions %></p>
+<p>Painter: <%= @painting.painter %></p>
+<p>Category: <%= @painting.category %></p>
+<p>Location: <%= @painting.location %></p>
+<p>Price per day: <%= @painting.price_per_day %></p>
 
 <%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-primary mt-3' %>
 <%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-warning mt-3' %>
 <%= link_to 'Back', paintings_path, class: 'btn btn-secondary mt-3' %>
+
+<p><%= link_to "Write a review", new_painting_review_path(@painting), class: "btn btn-success mt-4" %></p>
+
+
+<h2>Reviews:</h2>
+
+<ul class="list-unstyled">
+  <% @painting.reviews.each do |review| %>
+    <li class="my-3">
+    <% case review.rating %>
+      <% when 0 %>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <% when 1 %>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <% when 2 %>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <% when 3 %>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
+      <% when 4 %>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="far fa-star"></i>
+      <% when 5 %>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+      <i class="fas fa-star"></i>
+    <% end %><span class="text-secondary">
+    <%= " - \"" + review.content %>"</span></li>
+  <% end %>
+</ul>

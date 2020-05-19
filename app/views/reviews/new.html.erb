@@ -1,2 +1,12 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="p-4">
+<h1>Did you enjoy <%= @painting.name %>?</h1>
+<p>Leave a review and let us know</p>
+
+<%= simple_form_for([@painting, @review]) do |f| %>
+  <%= f.input :rating, :collection => %w[0 1 2 3 4 5] %>
+  <%= f.input :content %>
+  <%= f.button :submit, class: "btn btn-primary mt-3"%>
+<% end %>
+<br />
+<%= link_to "Cancel", painting_path(@painting), class: "btn btn-secondary" %>
+</div>

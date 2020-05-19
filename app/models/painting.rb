@@ -1,7 +1,7 @@
 class Painting < ApplicationRecord
   belongs_to :user
   has_many :requests
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   validates :name, presence: true
   validates :painter, presence: true
   validates :category, presence: true

@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   def new
-    @painting = Painting.find(params[:painting_id]) 
+    @painting = Painting.find(params[:painting_id])
     @review = Review.new
   end
 
@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
     @painting = Painting.find(params[:painting_id])
     @review = Review.new(review_params)
     @review.painting = @painting
+    @review.user = current_user
     if @review.save
       redirect_to painting_path(@painting)
     else
