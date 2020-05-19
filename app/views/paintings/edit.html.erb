@@ -1,2 +1,16 @@
-<h1>Paintings#edit</h1>
-<p>Find me in app/views/paintings/edit.html.erb</p>
+<div class="p-4">
+
+<h1 class="mb-5">Edit <%= @painting.name %></h1>
+
+<%= simple_form_for @painting do |f| %>
+    <%= f.input :name %>
+    <%= f.input :dimensions %>
+    <%= f.input :painter %>
+    <%= f.input :category %>
+    <%= f.input :location %>
+    <%= f.input :price_per_day %>
+    <%= f.button :submit, 'Save', class: "btn btn-primary" %>
+  <% end %>
+
+<%= link_to 'Cancel', painting_path(@painting), class: 'btn btn-secondary mt-3' %>
+</div>
