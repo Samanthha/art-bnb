@@ -1,24 +1,26 @@
 <div class="p-4">
+<p>
+  <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary mb-3' %>
+</p>
 
 <h1 class="mb-5">Paintings for rent</h1>
 
-<div class="flex-container">
-  <div class="flex-item cards">
-    <% @paintings.each do |painting| %>
-      <%= link_to painting_path(painting), class: "card-product" do %>
-        <h2><%= painting.name %></h2>
-        <ul class="card-product-infos">
-          <li><%= painting.painter %></li>
-          <li><%= painting.dimensions %></li>
-          <li>$<%= painting.price_per_day %> per day</li>
-        </ul>
+<p class="mb-4"><%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mb-5' %></p>
+
+  <div class="flex-container">
+    <div class="flex-item cards">
+      <% @paintings.each do |painting| %>
+        <%= link_to painting_path(painting), class: "card-product" do %>
+          <h2><%= painting.name %></h2>
+          <ul class="card-product-infos">
+            <li><%= painting.painter %></li>
+            <li><%= painting.dimensions %></li>
+            <li>$<%= painting.price_per_day %> per day</li>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-
-  <div class='mt-5'>
-    <%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mt-12' %>
-  </div>
-
 </div>
