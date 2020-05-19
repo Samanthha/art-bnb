@@ -8,6 +8,14 @@
   padding: 18px;
   margin-top: 0px;
   margin-bottom: 10px;
+  color: #3B3B3B;
+}
+
+.cards :hover {
+  background-color: #F4F4F4;
+  transition: 0.1s;
+  text-decoration: none;
+  color: #2CBB73;
 }
 
 .card-product img {
