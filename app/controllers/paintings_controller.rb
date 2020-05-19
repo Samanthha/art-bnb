@@ -13,8 +13,11 @@ class PaintingsController < ApplicationController
 
   def create
     new_painting = Painting.new(painting_params)
-    new_painting.save
-    redirect_to painting_path(new_painting)
+    if new_painting.save
+      redirect_to painting_path(new_painting)
+    else
+      render :new
+    end
   end
 
   def edit
