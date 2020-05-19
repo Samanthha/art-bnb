@@ -1,18 +1,24 @@
 <div class="p-4">
 
-<h1 class="mb-5">Paintings for rent:</h1>
+<h1 class="mb-5">Paintings for rent</h1>
 
-<% @paintings.each do |painting| %>
-  <%= link_to painting_path(painting), class: "painting" do%>
-    <h2><%=painting.name%></h2>
-    <ul>
-      <li>Artist: <%=painting.painter%></li>
-      <li><%=painting.dimensions%></li>
-      <li>$<%=painting.price_per_day%> per day</li>
-    </ul>
-  <%end%>
-<% end %>
+<div class="flex-container">
+  <div class="flex-item cards">
+    <% @paintings.each do |painting| %>
+      <%= link_to painting_path(painting), class: "card-product" do %>
+        <h2><%= painting.name %></h2>
+        <ul class="card-product-infos">
+          <li><%= painting.painter %></li>
+          <li><%= painting.dimensions %></li>
+          <li>$<%= painting.price_per_day %> per day</li>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
-<%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mt-5' %>
+  <div class='mt-5'>
+    <%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mt-12' %>
+  </div>
 
 </div>
