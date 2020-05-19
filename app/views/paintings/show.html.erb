@@ -1,6 +1,10 @@
 <div class="p-4">
 <h1><%= @painting.name %></h1>
-<p>input painting info here</p>
+<p>Dimensions: <%= @painting.dimensions %></p>
+<p>Painter: <%= @painting.painter %></p>
+<p>Category: <%= @painting.category %></p>
+<p>Location: <%= @painting.location %></p>
+<p>Price per day: <%= @painting.price_per_day %></p>
 
 <%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-primary mt-3' %>
 <%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-warning mt-3' %>
