@@ -1,6 +1,7 @@
 <div class="p-4">
 
-<h1 class="mb-5">Add a painting:</h1>
+<h1>Add a painting:</h1>
+<%= link_to 'Cancel', paintings_path, class: 'btn btn-secondary my-3' %>
 
 <%= simple_form_for(@painting) do |f| %>
     <%= f.input :name, label: "Name of painting", placeholder: "example: Starry Night" %>
