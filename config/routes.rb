@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :requests, only: [:new, :create]
   end
-  get '/paintings/:id/delete', to: 'paintings#delete'
+  get '/paintings/:id/delete', to: 'paintings#delete', as: "delete_painting"
   get '/requests/incoming', to: 'requests#incoming'
   get '/requests/outgoing', to: 'requests#outgoing'
   resources :requests, only: [:show, :update]

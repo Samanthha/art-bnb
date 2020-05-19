@@ -1,6 +1,7 @@
 <div class="p-4">
 
-<h1 class="mb-5">Edit <%= @painting.name %></h1>
+<h1>Edit <%= @painting.name %></h1>
+<%= link_to 'Cancel', painting_path(@painting), class: 'btn btn-secondary my-3' %>
 
 <%= simple_form_for @painting do |f| %>
     <%= f.input :name %>
@@ -12,5 +13,4 @@
     <%= f.button :submit, 'Save', class: "btn btn-primary" %>
   <% end %>
 
-<%= link_to 'Cancel', painting_path(@painting), class: 'btn btn-secondary mt-3' %>
 </div>
