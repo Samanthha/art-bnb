@@ -12,9 +12,10 @@ class PaintingsController < ApplicationController
   end
 
   def create
-    new_painting = Painting.new(painting_params)
-    if new_painting.save
-      redirect_to painting_path(new_painting)
+    @painting = Painting.new(painting_params)
+    @painting.user = current_user
+    if @painting.save
+      redirect_to painting_path(@painting)
     else
       render :new
     end
@@ -37,7 +38,9 @@ class PaintingsController < ApplicationController
   end
 
   def delete
-
+    @paintings = Painting.all
+    @painting = Painting.find(params[:id])
+    redirect_to paintings_path
   end
 
   private
