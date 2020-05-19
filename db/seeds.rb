@@ -1,3 +1,5 @@
+Painting.destroy_all
+
 User.new(email: "solene@email.com", password: "123456").save
 User.new(email: "daniela@email.com", password: "123456").save
 User.new(email: "celine@email.com", password: "123456").save
@@ -5,8 +7,8 @@ User.new(email: "samantha@email.com", password: "123456").save
 
 User.all.each do |user|
   rand(2..5).times do
-    Painting.new(name: Faker::Artist.name,
-                 painter: Faker::Hipster.word.capitalize,
+    Painting.new(name: Faker::Hipster.word.capitalize,
+                 painter: Faker::Artist.name,
                  category: %w[Impressionism Realism Renaissance Street-Art Abstract Modern].sample,
                  location: Faker::Address.city,
                  dimensions: "#{rand(30..400)} x #{rand(30..400)}",
