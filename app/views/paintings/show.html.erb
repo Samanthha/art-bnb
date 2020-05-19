@@ -1,5 +1,6 @@
 <div class="p-4">
 <h1><%= @painting.name %></h1>
+<p><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-success my-3" %></p>
 <p>Dimensions: <%= @painting.dimensions %></p>
 <p>Painter: <%= @painting.painter %></p>
 <p>Category: <%= @painting.category %></p>
