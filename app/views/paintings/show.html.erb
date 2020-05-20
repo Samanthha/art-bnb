@@ -1,7 +1,9 @@
 <div class="p-4">
 <h1><%= @painting.name %></h1>
-<p><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-success my-3" %></p>
-<p>Dimensions: <%= @painting.dimensions %></p>
+<p><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-success my-3" %>
+<%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
+<%= cl_image_tag @painting.photo.key, height: 300, width: 400, crop: :fill %>
+<p class="mt-3">Dimensions: <%= @painting.dimensions %></p>
 <p>Painter: <%= @painting.painter %></p>
 <p>Category: <%= @painting.category %></p>
 <p>Location: <%= @painting.location %></p>
@@ -9,7 +11,6 @@
 
 <%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-primary mt-3' %>
 <%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-warning mt-3' %>
-<%= link_to 'Back', paintings_path, class: 'btn btn-secondary mt-3' %>
 
 <p><%= link_to "Write a review", new_painting_review_path(@painting), class: "btn btn-success mt-4" %></p>
 
