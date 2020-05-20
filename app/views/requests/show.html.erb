@@ -1,11 +1,13 @@
+<div class="p-4">
 <h1>Painting: <%= @request.painting.name %></h1>
 <p>Owner of painting: <%= @request.painting.user.email %> </p>
 <p>For rent to: <%= @request.user.email %></p>
-<p>Start date: <%= @request.start_date %>
-<p>End date: <%= @request.end_date %>
+<p>Start date: <%= @request.start_date %></p>
+<p>End date: <%= @request.end_date %></p>
 
 <% if @request.user == current_user %>
   <p><%= link_to 'Back', outgoing_requests_path, class: 'btn btn-secondary my-3' %></p>
 <% else %>
   <p><%= link_to 'Back', incoming_requests_path, class: 'btn btn-secondary my-3' %></p>
 <% end %>
+</div>
