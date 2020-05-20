@@ -1,3 +1,20 @@
+#header{
+    height: 500px;
+    width:100vw;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    background-image: url("https://images.unsplash.com/photo-1563000215-e31a8ddcb2d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1038&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#headerContent{
+    margin: 0 auto;
+    width: 960px;
+}
+
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -16,8 +33,17 @@ li {
   border-radius: 5px;
   color: #535353;
   &:hover {
-    color: black;
+    color: white;
     transition: 0.1s;
     text-decoration: none;
   }
 }
+
+
+
+// .carousel-item img {
+//   height: 500px;
+//   width: 100%;
+//   margin-bottom: 50px;
+//   object-fit: cover;
+// }
