@@ -5,9 +5,19 @@
 }
 
 body {
-  text-color: grey;
+  color: #535353;
 }
 
 li {
     list-style-type: none;
+}
+
+.btn-lg {
+  border-radius: 5px;
+  color: #535353;
+  &:hover {
+    color: black;
+    transition: 0.1s;
+    text-decoration: none;
+  }
 }
