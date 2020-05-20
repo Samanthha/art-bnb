@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
 
   def create
     @painting = Painting.find(params[:painting_id])
-    @request = Request.new
+    @request = Request.new(request_params)
     @request.status = "Pending..."
     @request.painting = @painting
     @request.user = current_user
