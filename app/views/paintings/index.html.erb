@@ -13,8 +13,10 @@
     <div class="flex-item cards">
       <% @paintings.each do |painting| %>
         <%= link_to painting_path(painting), class: "card-product" do %>
-          <h2><%= painting.name %></h2>
+        <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
+
           <ul class="card-product-infos">
+            <li><h2><%= painting.name %></h2></li>
             <li><%= painting.painter %></li>
             <li><%= painting.dimensions %></li>
             <li>$<%= painting.price_per_day %> per day</li>
