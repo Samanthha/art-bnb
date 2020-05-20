@@ -41,8 +41,8 @@ User.all.each do |user|
                                )
     attach_image(painting, counter)
     painting.save
+    counter += 1
   end
-  counter += 1
 end
 
 # Generate reviews for paintings
