@@ -1,2 +1,8 @@
-<h1>Requests#incoming</h1>
-<p>Find me in app/views/requests/incoming.html.erb</p>
+<h1>Icoming requests:</h1>
+<ul>
+<% @requests.each do |request|%>
+  <li><%= link_to request_path(request) do %>
+    <%= request.painting.name %> <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> - Buttons to accept or deny request</li>
+  <% end %>
+<% end %>
+</ul>
