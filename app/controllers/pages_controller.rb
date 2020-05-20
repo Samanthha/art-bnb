@@ -4,5 +4,7 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @user = current_user
+    @paintings = Painting.where(user: current_user)
   end
 end
