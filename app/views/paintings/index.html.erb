@@ -1,16 +1,11 @@
 <div class="p-4">
-<p>
-  <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary mb-3' %>
-  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary mb-3' %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-primary mb-3' %>
-</p>
 
 <h1 class="mb-5">Paintings for rent</h1>
 
 <p class="mb-4"><%= link_to 'Add a painting', new_painting_path, class: 'btn-lg btn-success mb-5' %></p>
 
   <div class="flex-container">
-    <div class="flex-item cards">
+        <div class="flex-item cards">
       <% @paintings.each do |painting| %>
         <%= link_to painting_path(painting), class: "card-product" do %>
         <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
