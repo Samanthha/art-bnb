@@ -1,8 +1,17 @@
-<h1>Icoming requests:</h1>
-<ul>
-<% @requests.each do |request|%>
-  <li><%= link_to request_path(request) do %>
-    <%= request.painting.name %> <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> - Buttons to accept or deny request</li>
-  <% end %>
-<% end %>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>Incoming requests:</h1>
+      <ul class="list-group">
+        <% @requests.each do |request|%>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to request_path(request) do %>
+          <%= request.painting.name %>
+          <% end %>
+          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> -
+          <%= link_to %><button type="button" class="btn btn-success"><i class="fas fa-check"></i></button><% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
