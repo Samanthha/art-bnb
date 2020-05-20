@@ -4,6 +4,7 @@
 <%= link_to 'Cancel', painting_path(@painting), class: 'btn btn-secondary my-3' %>
 
 <%= simple_form_for @painting do |f| %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :name %>
     <%= f.input :dimensions %>
     <%= f.input :painter %>
