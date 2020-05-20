@@ -9,14 +9,20 @@
           <%= request.painting.name %>
           <% end %>
           <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> -
-    <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-      <%= f.hidden_field :status, value: "Accept" %>
-      <%= f.submit 'Accept', class: "btn btn-success" %>
-    <% end %>
-    <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-      <%= f.hidden_field :status, value: "Decline" %>
-      <%= f.submit 'Decline', class: "btn btn-danger my-3" %>
-    <% end %>
+      <% if request.status == "Pending..." %>
+        <div class="d-flex justify-content align-items-center">
+        <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+          <%= f.hidden_field :status, value: "Accept" %>
+          <%= f.submit 'Accept', class: "btn btn-success" %>
+        <% end %>
+        <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+          <%= f.hidden_field :status, value: "Decline" %>
+          <%= f.submit 'Decline', class: "btn btn-danger my-3 ml-3" %>
+        <% end %>
+        </div>
+      <% else %>
+        <%= request.status %>
+      <% end %>
     <% end %>
         </li>
       </ul>

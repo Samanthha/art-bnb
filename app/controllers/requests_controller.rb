@@ -19,14 +19,12 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-
-    if status_params == {status: :Accept}
+    if status_params == {status: "Accept"}
       @request.status = "Accepted"
-    elsif status_params == {status: :Decline}
+    elsif status_params == {status: "Decline"}
       @request.status = "Declined"
-    elsif status_params == {status: :Cancel}
+    elsif status_params == {status: "Cancel"}
       @request.status = "Cancelled"
-    else
     end
   end
 
