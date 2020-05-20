@@ -1,8 +1,24 @@
 <h1>Icoming requests:</h1>
 <ul>
 <% @requests.each do |request|%>
-  <li><%= link_to request_path(request) do %>
-    <%= request.painting.name %> <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> - Buttons to accept or deny request</li>
-  <% end %>
+  <li>
+    <%= link_to request_path(request) do %>
+      <%= request.painting.name %>
+    <% end %>
+
+    <%= request.user.email %> - <%= request.start_date %> - <%= request.end_date %>
+
+  </li>
+
+    <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+      <%= f.hidden_field :status, value: "Accept" %>
+      <%= f.submit 'Accept', class: "btn btn-success" %>
+    <% end %>
+
+    <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+      <%= f.hidden_field :status, value: "Decline" %>
+      <%= f.submit 'Decline', class: "btn btn-danger my-3" %>
+    <% end %>
+
 <% end %>
 </ul>
