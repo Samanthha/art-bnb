@@ -13,7 +13,7 @@
     <div class="flex-item cards">
       <% @paintings.each do |painting| %>
         <%= link_to painting_path(painting), class: "card-product" do %>
-          <div class="photo-background" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('<%= cl_image_path painting.photo.key, height: 300, width: 400, crop: :fill %>')">
+          <!-- <div class="photo-background" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('<%= cl_image_path painting.photo.key, height: 300, width: 400, crop: :fill %>')"> -->
             <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
             <h2><%= painting.name %></h2>
             <ul class="card-product-infos">
