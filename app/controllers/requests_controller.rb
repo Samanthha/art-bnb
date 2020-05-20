@@ -19,9 +19,14 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    # TO DO !!!
+    # make a button that returns the new status ie: Accepted, declined
   end
 
   def incoming
+    paintings = current_user.paintings
+    array = paintings.map { |painting| painting.requests }
+    @requests = array[0]
   end
 
   def outgoing
