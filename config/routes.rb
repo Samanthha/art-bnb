@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/requests/incoming', to: 'requests#incoming', as: "incoming_requests"
   get '/requests/outgoing', to: 'requests#outgoing', as: "outgoing_requests"
   get '/profile', to: 'pages#profile', as: "profile"
-  resources :requests, only: [:show, :update]
+  patch '/requests/:id', to: 'requests#update', as: "update_request"
+  resources :requests, only: [:show]
 end

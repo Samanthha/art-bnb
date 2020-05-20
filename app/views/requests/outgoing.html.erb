@@ -2,7 +2,7 @@
 <ul>
 <% @requests.each do |request|%>
   <li><%= link_to request_path(request) do %>
-    <%= request.painting.name %> <%= request.start_date %> - <%= request.end_date %> - <%= request.status %></li>
-  <% end %>
+    <%= request.painting.name %> <%= request.start_date %> - <%= request.end_date %>
+  <% end %> - <%= request.status %></li>
 <% end %>
 </ul>
