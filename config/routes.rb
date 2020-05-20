@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create]
   end
   get '/paintings/:id/delete', to: 'paintings#delete', as: "delete_painting"
-  get '/requests/incoming', to: 'requests#incoming'
-  get '/requests/outgoing', to: 'requests#outgoing'
+  get '/requests/incoming', to: 'requests#incoming', as: "incoming_requests"
+  get '/requests/outgoing', to: 'requests#outgoing', as: "outgoing_requests"
+  get '/profile', to: 'pages#profile', as: "profile"
   resources :requests, only: [:show, :update]
 end

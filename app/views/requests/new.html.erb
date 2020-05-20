@@ -1,2 +1,11 @@
-<h1>Requests#new</h1>
-<p>Find me in app/views/requests/new.html.erb</p>
+<div class="p-4">
+<h1>Send a request to rent <%= @painting.name %></h1>
+
+<%= simple_form_for([@painting, @request]) do |f| %>
+  <%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, input_html: { min: Date.today.to_s, value: Date.today.to_s } %>
+  <%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, input_html: { min: Date.today.to_s, value: Date.today.to_s } %>
+  <%= f.button :submit, class: "btn btn-primary mt-3"%>
+<% end %>
+<br />
+<%= link_to "Cancel", painting_path(@painting), class: "btn btn-secondary" %>
+</div>

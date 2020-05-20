@@ -7,6 +7,7 @@ class RequestsController < ApplicationController
   def create
     @painting = Painting.find(params[:painting_id])
     @request = Request.new
+    @request.status = "Pending..."
     @request.painting = @painting
     @request.user = current_user
     if @request.save
@@ -14,10 +15,6 @@ class RequestsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @request = Request.find(params[:id])
   end
 
   def update
@@ -28,6 +25,11 @@ class RequestsController < ApplicationController
   end
 
   def outgoing
+    @requests = Request.where(user: current_user)
+  end
+
+  def show
+    @request = Request.find(params[:id])
   end
 
   private
