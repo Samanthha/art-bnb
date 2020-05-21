@@ -20,6 +20,7 @@ class PaintingsController < ApplicationController
     @painting = Painting.new(painting_params)
     @painting.user = current_user
     if @painting.save
+      flash[:notice] = "You have successfully added a painting."
       redirect_to painting_path(@painting)
     else
       render :new
