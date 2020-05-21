@@ -2,6 +2,7 @@
 
 <h1 class= "my-5">Add a painting:</h1>
 
+<div style= "width: 300px">
 <%= simple_form_for(@painting) do |f| %>
   <%= f.input :photo, as: :file %>
   <%= f.input :name, label: "Name of painting", placeholder: "example: Starry Night" %>
@@ -13,5 +14,6 @@
   <%= f.button :submit, 'Save', class: "btn btn-primary my-3"%>
   <%= link_to 'Cancel', paintings_path, class: 'btn btn-secondary my-3' %>
 <% end %>
+</div>
 
 </div>
