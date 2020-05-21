@@ -19,13 +19,14 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    if status_params == {status: "Accept"}
-      @request.status = "Accepted"
-    elsif status_params == {status: "Decline"}
-      @request.status = "Declined"
-    elsif status_params == {status: "Cancel"}
-      @request.status = "Cancelled"
+    # if status one of a/d/c
+    if ["Accepted", "Declined", "Cancelled"].include?(status_params[:status])
+      @request.status = status_params[:status]
+      @request.save!
+    # else 
+      # display error message
     end
+    redirect_to incoming_requests_path
   end
 
   def incoming

@@ -6,24 +6,27 @@
         <% @requests.each do |request|%>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <%= link_to request_path(request) do %>
-          <%= request.painting.name %>
+            <%= request.painting.name %>
           <% end %>
-          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> -
-      <% if request.status == "Pending..." %>
-        <div class="d-flex justify-content align-items-center">
-        <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-          <%= f.hidden_field :status, value: "Accept" %>
-          <%= f.submit 'Accept', class: "btn btn-success" %>
+          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %>
+          <% if request.pending? %>
+            <div class="d-flex justify-content align-items-center">
+            <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: "Accepted" %>
+              <%= f.submit 'Accept', class: "btn btn-success" %>
+            <% end %>
+            <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: "Declined" %>
+              <%= f.submit 'Decline', class: "btn btn-danger my-3 ml-3" %>
+            <% end %>
+            </div>
+          <% elsif request.accepted? %>
+              <span class="green-text font-weight-bold"><%= request.status %></span>
+          <% elsif request.declined? %>
+              <span class="red-text font-weight-bold"><%= request.status %></span>
+          <% end %>
+
         <% end %>
-        <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-          <%= f.hidden_field :status, value: "Decline" %>
-          <%= f.submit 'Decline', class: "btn btn-danger my-3 ml-3" %>
-        <% end %>
-        </div>
-      <% else %>
-        <%= request.status %>
-      <% end %>
-    <% end %>
         </li>
       </ul>
 <p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
