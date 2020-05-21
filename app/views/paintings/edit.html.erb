@@ -1,8 +1,8 @@
-<div class="p-4">
+<div class="col-md-4 offset-md-4">
 
-<h1>Edit <%= @painting.name %></h1>
-<%= link_to 'Cancel', painting_path(@painting), class: 'btn btn-secondary my-3' %>
+<h1 class= "my-5">Edit <%= @painting.name %>:</h1>
 
+<div style= "width: 300px">
 <%= simple_form_for @painting do |f| %>
     <%= f.input :photo, as: :file %>
     <%= f.input :name %>
@@ -12,6 +12,8 @@
     <%= f.input :location %>
     <%= f.input :price_per_day %>
     <%= f.button :submit, 'Save', class: "btn btn-primary" %>
-  <% end %>
+  <%= link_to 'Cancel', paintings_path, class: 'btn btn-secondary my-3' %>
+<% end %>
+</div>
 
 </div>
