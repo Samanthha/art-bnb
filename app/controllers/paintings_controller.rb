@@ -36,17 +36,19 @@ class PaintingsController < ApplicationController
 
   def update
     @painting.update(painting_params)
-
+    authorize @painting
     redirect_to painting_path(@painting)
   end
 
   def destroy
     @painting.destroy
+    authorize @painting
     redirect_to paintings_path
   end
 
   def delete
     @paintings = Painting.all
+    authorize @painting
     @painting = Painting.find(params[:id])
   end
 
