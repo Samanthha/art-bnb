@@ -1,37 +1,42 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  </head>
 
-<div id="header">
-    <div id="headerContent">
-        <h2>Rent a painting for your next party</h2>
+<body>
+    <div id="header">
+        <div id="headerContent">
+            <h2>Rent a painting and look fancy!</h2>
+              <%= form_tag paintings_path, method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Type a painting's title"
+                %>
+                <%= submit_tag "Search", class: "btn btn-primary" %>
+              <% end %>
+        </div>
+    </div>
 
-          <%= form_tag paintings_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Type a painting's title"
-            %>
-            <%= submit_tag "Search", class: "btn btn-success" %>
+
+    <div class="p-4">
+      <div class="flex-container">
+            <div class="flex-item cards">
+          <% @paintings.each do |painting| %>
+            <%= link_to painting_path(painting), class: "card-product" do %>
+            <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
+
+              <ul class="card-product-infos">
+                <li><h2><%= painting.name %></h2></li>
+                <li><i class="fas fa-palette"></i> <%= painting.painter %></li>
+                <li><i class="fas fa-tape"></i> <%= painting.dimensions %></li>
+                <li><i class="fas fa-tag"></i> $<%= painting.price_per_day %> per day</li>
+              </ul>
+            <% end %>
           <% end %>
-
-
+        </div>
+      </div>
     </div>
-</div>
+  </body>
 
-
-<div class="p-4">
-  <div class="flex-container">
-        <div class="flex-item cards">
-      <% @paintings.each do |painting| %>
-        <%= link_to painting_path(painting), class: "card-product" do %>
-        <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
-
-          <ul class="card-product-infos">
-            <li><h2><%= painting.name %></h2></li>
-            <li><i class="fas fa-palette"></i> <%= painting.painter %></li>
-            <li><i class="fas fa-tape"></i> <%= painting.dimensions %></li>
-            <li><i class="fas fa-tag"></i> $<%= painting.price_per_day %> per day</li>
-          </ul>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+</html>
