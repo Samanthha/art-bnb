@@ -1,9 +1,5 @@
-.btn {
-  border-radius: 5px;
-  color: #535353;
-  &:hover {
-    color: white;
-    transition: 0.1s;
-    text-decoration: none;
-  }
+.flex-container {
+  display: flex;
+  flex-direction: row;
 }
+
