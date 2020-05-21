@@ -14,4 +14,9 @@ class Request < ApplicationRecord
   def declined?
     status == "Declined"
   end
+
+  def cancelled?
+    status == "Cancelled"
+  end
+  
 end
