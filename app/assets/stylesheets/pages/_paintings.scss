@@ -1,20 +1,3 @@
-@media (max-width: 960px) {
-  .container {
-    width: 700px;
-  }
-}
-@media (max-width: 720px) {
-  .container {
-    width: 500px;
-  }
-}
-@media (max-width: 540px) {
-  .container {
-    width: 300px;
-  }
-}
-
-
 #header{
     height: 500px;
     width:100vw;
@@ -30,13 +13,6 @@
 #headerContent{
     margin: 0 auto;
     width: 960px;
-}
-
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
 }
 
 body {
@@ -55,6 +31,12 @@ li {
     transition: 0.1s;
     text-decoration: none;
   }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-gap: 16px;
 }
 
 
