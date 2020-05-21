@@ -36,13 +36,6 @@
     width: 960px;
 }
 
-
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
 body {
   color: #535353;
 }
@@ -59,4 +52,10 @@ li {
     transition: 0.1s;
     text-decoration: none;
   }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-gap: 16px;
 }
