@@ -2,33 +2,55 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h1>Incoming requests:</h1>
-      <ul class="list-group">
-        <% @requests.each do |request|%>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <%= link_to request_path(request) do %>
-            <%= request.painting.name %>
+      <table class="table table-light table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Painting</th>
+            <th scope="col">User email</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr>  
+              <td>
+                <%= link_to request_path(request) do %>
+                  <%= request.painting.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= request.user.email %>
+              </td>
+              <td>
+                <%= request.start_date %>
+              </td>
+              <td>
+                <%= request.end_date %>
+              </td>
+              <td>
+                <% if request.pending? %>
+                  <div class="d-flex justify-content align-items-center">
+                  <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Accepted" %>
+                    <%= f.submit 'Accept', class: "btn btn-success" %>
+                  <% end %>
+                  <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Declined" %>
+                    <%= f.submit 'Decline', class: "btn btn-danger my-3 ml-3" %>
+                  <% end %>
+                  </div>
+                <% elsif request.accepted? %>
+                    <span class="green-text font-weight-bold"><%= request.status %></span>
+                <% elsif request.declined? %>
+                    <span class="red-text font-weight-bold"><%= request.status %></span>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
-          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> 
-          <% if request.pending? %>
-            <div class="d-flex justify-content align-items-center">
-            <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: "Accepted" %>
-              <%= f.submit 'Accept', class: "btn btn-success" %>
-            <% end %>
-            <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: "Declined" %>
-              <%= f.submit 'Decline', class: "btn btn-danger my-3 ml-3" %>
-            <% end %>
-            </div>
-          <% elsif request.accepted? %>
-              <span class="green-text font-weight-bold"><%= request.status %></span>
-          <% elsif request.declined? %>
-              <span class="red-text font-weight-bold"><%= request.status %></span>
-          <% end %>
-
-        <% end %>
-        </li>
-      </ul>
+        </tbody>
+      </table>
 <p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
     </div>
   </div>
