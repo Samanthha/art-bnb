@@ -1,6 +1,6 @@
 <div class="p-4">
 <h1><%= @painting.name %></h1>
-<%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
+<%= link_to '< back', paintings_path, class: 'btn btn-secondary my-3' %></p>
 
 <div class="flex-container">
   <div class="card-painting flex-item">
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-secondary mt-3' %>
-<%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-secondary mt-3' %>
+<%= link_to 'edit', edit_painting_path(@painting), class: 'btn btn-secondary mt-3' %>
+<%= link_to 'delete', delete_painting_path(@painting), class: 'btn btn-secondary mt-3' %>
 
 
