@@ -1,36 +1,34 @@
 .btn-primary {
   font-family: "Work Sans", "Helvetica", "sans-serif";
-  color: #4A4A4A;
-  background: #1EDD88;
+  color: white;
+  background: #72ABE5;
   border: none;
   padding: 8px 24px;
   border-radius: 50px;
-  font-weight: lighter;
-  transition: opacity 0.3s ease;
 }
 
 .btn-primary:hover {
   color: white;
-  background: #1BCB7F;
+  background: #6699CE;
 }
 
 
 .btn-secondary {
   font-family: "Work Sans", "Helvetica", "sans-serif";
-  color: #4A4A4A;
+  color: rgba(120,120,120,1);;
   background-color: white;
-  border: 1px solid #4A4A4A;
+  border: 1px solid rgba(120,120,120,1);;
   padding: 8px 24px;
   border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
 }
 
 .btn-secondary:hover {
   background-color: white;
   opacity: 1;
-  color: #4A4A4A;
+  color: rgba(120,120,120,1);;
 }
+
+
+
 
 
