@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
-  def home
-    redirect_to paintings_path
-  end
+  skip_before_action :authenticate_user!
+  skip_after_action :verify_authorized
 
-  def profile
+   def profile
     @user = current_user
     @paintings = Painting.where(user: current_user)
   end
