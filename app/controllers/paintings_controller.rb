@@ -1,4 +1,6 @@
 class PaintingsController < ApplicationController
+  before_action :set_painting, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR painter ILIKE :query"
@@ -9,15 +11,16 @@ class PaintingsController < ApplicationController
   end
 
   def show
-    @painting = Painting.find(params[:id])
   end
 
   def new
     @painting = Painting.new
+    authorize @painting
   end
 
   def create
     @painting = Painting.new(painting_params)
+    authorize @painting
     @painting.user = current_user
     if @painting.save
       flash[:notice] = "You have successfully added a painting."
@@ -28,18 +31,15 @@ class PaintingsController < ApplicationController
   end
 
   def edit
-    @painting = Painting.find(params[:id])
   end
 
   def update
-    @painting = Painting.find(params[:id])
     @painting.update(painting_params)
 
     redirect_to painting_path(@painting)
   end
 
   def destroy
-    @painting = Painting.find(params[:id])
     @painting.destroy
     redirect_to paintings_path
   end
@@ -50,6 +50,11 @@ class PaintingsController < ApplicationController
   end
 
   private
+
+  def set_painting
+    @painting = Painting.find(params[:id])
+    authorize @painting
+  end
 
   def painting_params
     params.require(:painting).permit(:photo, :name, :painter, :category, :location, :dimensions, :price_per_day)
