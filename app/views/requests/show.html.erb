@@ -1,6 +1,12 @@
 <div class="p-5">
 
-<h1 class= "mb-4"><%= link_to '<⠀Back', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %><%= @request.painting.name %></h1>
+<h1 class= "mb-4">
+  <% if @request.user == current_user %>
+    <%= link_to '<⠀Back', outgoing_requests_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>
+  <% else %>
+    <%= link_to '<⠀Back', incoming_requests_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>
+  <% end %>
+  <%= @request.painting.name %></h1>
 
 <div class="flex-container">
 <div class="card-painting d-flex align-items-start flex-column">
