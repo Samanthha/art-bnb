@@ -1,7 +1,8 @@
 class PaintingsController < ApplicationController
   def index
     if params[:query].present?
-      @paintings = Painting.where("name ILIKE ?", "%#{params[:query]}%")
+      sql_query = "name ILIKE :query OR painter ILIKE :query"
+      @paintings = Painting.where(sql_query, query: "%#{params[:query]}%")
     else
       @paintings = Painting.all
     end
