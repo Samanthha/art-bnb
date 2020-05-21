@@ -17,23 +17,31 @@
 .form-control {
     width: 500px;
     border-radius: 50px;
+    display: inline-block;
 }
 
-#header{
+#header {
     height: 600px;
     width:100vw;
     margin-top: 0px;
     margin-bottom: 40px;
-    padding: none;
+    padding: 0px;
     background-image: url("https://images.unsplash.com/photo-1563000215-e31a8ddcb2d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1038&q=80");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-#headerContent{
+#headerContent {
     margin: 0 auto;
     width: 960px;
+    text-align: center;
+}
+
+#headerContent h2 {
+  font-size: 54px;
+  font-family: 'Pacifico', cursive;
+  line-height: 3;
 }
 
 body {
