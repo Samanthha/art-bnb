@@ -2,28 +2,47 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
     <h1>Outgoing requests:</h1>
-      <ul class="list-group">
-        <% @requests.each do |request|%>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <%= link_to request_path(request) do %>
-              <%= request.painting.name %>
-            <% end %>
-            <%= request.start_date %> <%= request.end_date %>
-            <% if request.pending? %>
-              <div class="d-flex justify-content align-items-center">
-              <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
-                <%= f.hidden_field :status, value: "Cancelled" %>
-                <%= f.submit 'Cancel', class: "btn btn-danger my-3 ml-3" %>
+    <table class="table table-light table-hover">
+        <thead>
+          <tr>
+           <th scope="col">Painting</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Status</th>
+           </tr>
+        </thead>
+        <tbody>
+          <% @requests.each do |request| %>
+          <tr>
+            <td>
+              <%= link_to request_path(request) do %>
+                <%= request.painting.name %>
               <% end %>
-              </div>
-          <% elsif request.accepted? %>
-                <span class="green-text font-weight-bold"><%= request.status %></span>
-          <% elsif request.declined? or request.cancelled? %>
-                <span class="red-text font-weight-bold"><%= request.status %></span>      
+            </td>
+            <td>
+              <%= request.start_date %>
+            </td>
+            <td>
+              <%= request.end_date %>
+            </td>
+            <td>
+              <% if request.pending? %>
+                <div class="d-flex justify-content align-items-center">
+                <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+                  <%= f.hidden_field :status, value: "Cancelled" %>
+                  <%= f.submit 'Cancel', class: "btn btn-danger my-3 ml-3" %>
+                <% end %>
+                </div>
+              <% elsif request.accepted? %>
+                    <span class="green-text font-weight-bold"><%= request.status %></span>
+              <% elsif request.declined? or request.cancelled? %>
+                    <span class="red-text font-weight-bold"><%= request.status %></span>      
+              <% end %>
+            </td>
+          </tr>
           <% end %>
-         </li><% end %>
-      </ul>
-
+        </tbody>
+    </table>
 <p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
     </div>
   </div>
