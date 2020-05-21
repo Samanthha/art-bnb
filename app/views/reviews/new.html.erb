@@ -2,7 +2,7 @@
 <h1 class="mb-3">Did you enjoy <%= @painting.name %>?</h1>
 <p class="mb-5">Leave a review and let us know</p>
 
-<div style="width: 300px"
+<div style="width: 300px">
 <%= simple_form_for([@painting, @review]) do |f| %>
   <%= f.input :rating, :collection => %w[0 1 2 3 4 5] %>
   <%= f.input :content, label: "Write a comment" %>
