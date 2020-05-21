@@ -40,7 +40,7 @@ User.all.each do |user|
                                user: user
                                )
     attach_image(painting, counter)
-    painting.save
+    painting.save!
     counter += 1
   end
 end
@@ -50,7 +50,7 @@ Painting.all.each do |painting|
   rand(2..5).times do
     rating = rand(2..5)
     content = ["good quality", "well delivered", "I hosted a great dinner party", "perfect for realtors like me who need fancy paintings", "OK service", "Person was very punctual and helpful", "good", "Ok thanks", "nice!", "cool", "awesome", "sweet"].sample
-    Review.create(
+    Review.create!(
       rating: rating,
       content: content,
       painting: painting,
