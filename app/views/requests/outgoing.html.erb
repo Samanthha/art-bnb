@@ -9,10 +9,22 @@
               <%= request.painting.name %>
             <% end %>
             <%= request.start_date %> <%= request.end_date %>
-         <%= request.status %></li><% end %>
+            <% if request.pending? %>
+              <div class="d-flex justify-content align-items-center">
+              <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
+                <%= f.hidden_field :status, value: "Cancelled" %>
+                <%= f.submit 'Cancel', class: "btn btn-danger my-3 ml-3" %>
+              <% end %>
+              </div>
+          <% elsif request.accepted? %>
+                <span class="green-text font-weight-bold"><%= request.status %></span>
+          <% elsif request.declined? or request.cancelled? %>
+                <span class="red-text font-weight-bold"><%= request.status %></span>      
+          <% end %>
+         </li><% end %>
       </ul>
 
-    <p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
+<p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
     </div>
   </div>
 </div>
