@@ -26,7 +26,8 @@ class RequestsController < ApplicationController
     # else 
       # display error message
     end
-    redirect_to incoming_requests_path
+    session[:return_to] = request.referer
+    redirect_to session.delete(:return_to)
   end
 
   def incoming

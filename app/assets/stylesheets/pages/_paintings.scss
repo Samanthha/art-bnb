@@ -6,20 +6,23 @@
 
 #header {
     height: 600px;
-    width:100vw;
-    margin-top: 0px;
-    margin-bottom: 40px;
+    margin: 0 auto;
     padding: 0px;
     background-image: url("https://images.unsplash.com/photo-1563000215-e31a8ddcb2d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1038&q=80");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    color: white;
+    text-shadow: 2px 2px 4px #333;
 }
 
 #headerContent {
-    margin: 0 auto;
-    width: 960px;
+    margin: auto;
     text-align: center;
+    justify-content: center;
+    padding-bottom: 40px;
+
 }
 
 #headerContent h2 {

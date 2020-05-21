@@ -8,7 +8,7 @@
           <%= link_to request_path(request) do %>
             <%= request.painting.name %>
           <% end %>
-          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %>
+          <%= request.user.email %> <%= request.start_date %> - <%= request.end_date %> 
           <% if request.pending? %>
             <div class="d-flex justify-content align-items-center">
             <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
