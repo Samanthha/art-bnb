@@ -1,12 +1,13 @@
 class PaintingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_painting, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR painter ILIKE :query"
-      @paintings = Painting.where(sql_query, query: "%#{params[:query]}%")
+      @paintings = policy_scope(Painting).where(sql_query, query: "%#{params[:query]}%")
     else
-      @paintings = Painting.all
+      @paintings = policy_scope(Painting)
     end
   end
 
