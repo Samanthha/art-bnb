@@ -1,13 +1,48 @@
-<div class="p-4">
-<h1>Painting: <%= @request.painting.name %></h1>
-<p>Owner of painting: <%= @request.painting.user.email %> </p>
-<p>For rent to: <%= @request.user.email %></p>
-<p>Start date: <%= @request.start_date %></p>
-<p>End date: <%= @request.end_date %></p>
+<div class="p-5">
 
-<% if @request.user == current_user %>
-  <p><%= link_to 'Back', outgoing_requests_path, class: 'btn btn-secondary my-3' %></p>
-<% else %>
-  <p><%= link_to 'Back', incoming_requests_path, class: 'btn btn-secondary my-3' %></p>
-<% end %>
-</div>
+<h1 class= "mb-4">
+  <% if @request.user == current_user %>
+    <%= link_to '<⠀Back', outgoing_requests_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>
+  <% else %>
+    <%= link_to '<⠀Back', incoming_requests_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>
+  <% end %>
+  <%= @request.painting.name %></h1>
+
+<div class="flex-container">
+<div class="card-painting d-flex align-items-start flex-column">
+  <div class="mb-3">
+    <div>
+      <%= link_to 'View Painting Info', painting_path(@request.painting), class: 'btn btn-secondary ml-2' %>
+    </div>
+  </div>
+<div class="flex-container pr-4">
+    <%= cl_image_tag @request.painting.photo.key, height: 300, width: 400, crop: :fill %>
+    <ul>
+      <li><i class="fas fa-palette"></i> Owner of painting:<span style="color: gray"> <%= @request.painting.user.email %></span></li>
+      <li><i class="fa fa-bell"></i> For rent to:<span style="color: gray"> <%= @request.user.email %></span></li>
+      <li><i class="far fa-calendar-alt"></i> Start date:<span style="color: gray"> <%= @request.start_date %></span></li>
+      <li><i class="fas fa-calendar-alt"></i> End date:<span style="color: gray"> <%= @request.end_date %></span></li>
+      <li><i class="fas fa-tag"></i> Price per day:<span style="color: gray"> $<%= @request.painting.price_per_day %></span></li>
+      <li><i class="fas fa-map-marker-alt mb-5"></i> Location:<span style="color: gray"> <%= @request.painting.location %></span></li>
+      <li class="ml-5">
+        <% if @request.pending? %>
+          <div class="d-flex justify-content align-items-center">
+          <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
+            <%= f.hidden_field :status, value: "Accepted" %>
+            <%= f.submit 'Accept', class: "btn btn-success" %>
+          <% end %>
+          <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
+            <%= f.hidden_field :status, value: "Declined" %>
+            <%= f.submit 'Decline', class: "btn btn-danger ml-3" %>
+          <% end %>
+          </div>
+        <% elsif @request.accepted? %>
+            <span class="green-text font-weight-bold pt-5">Rental request <%= @request.status %></span>
+        <% elsif @request.declined? %>
+            <span class="red-text font-weight-bold">Rental request <%= @request.status %></span>
+        <% elsif @request.status == "Pending..." %>
+            <span style="color: gray" class="font-weight-bold">Rental request <%= @request.status %></span>
+        <% end %></li>
+    </ul>
+
+  </div></div></div></div>

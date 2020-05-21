@@ -1,8 +1,10 @@
+<div class= "p-5">
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-    <h1>Outgoing requests:</h1>
-    <table class="table table-light table-hover">
+      <h1 class="mb-4">Outgoing requests:</h1>
+      <div style="background: white" class="rounded">
+    <table class="table table-hover">
         <thead>
           <tr>
            <th scope="col">Painting</th>
@@ -36,14 +38,17 @@
               <% elsif request.accepted? %>
                     <span class="green-text font-weight-bold"><%= request.status %></span>
               <% elsif request.declined? or request.cancelled? %>
-                    <span class="red-text font-weight-bold"><%= request.status %></span>      
+                    <span class="red-text font-weight-bold"><%= request.status %></span>
               <% end %>
             </td>
           </tr>
           <% end %>
         </tbody>
     </table>
-<p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
+  </div>
+<p><%= link_to 'Home', paintings_path, class: 'btn btn-secondary my-3' %></p>
     </div>
   </div>
+</div>
+</div>
 </div>

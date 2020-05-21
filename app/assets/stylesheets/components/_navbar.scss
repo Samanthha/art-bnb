@@ -17,4 +17,17 @@
   position: relative;
   display: flex;
   align-items: center;
+  
+.dropdown-menu {
+  border: none;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+
+.dropdown-item {
+  padding: 24px;
+  padding-right: 30px;
+}
+
+.dropdown-item:hover {
+  background: rgba(0,0,0,0.1);
 }

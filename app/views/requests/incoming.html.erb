@@ -1,8 +1,10 @@
-<div class="container-fluid">
+<div class= "p-5">
+  <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h1>Incoming requests:</h1>
-      <table class="table table-light table-hover">
+      <h1 class="mb-4">Incoming requests:</h1>
+      <div style="background: white" class="rounded">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Painting</th>
@@ -14,7 +16,7 @@
         </thead>
         <tbody>
           <% @requests.each do |request| %>
-            <tr>  
+            <tr>
               <td>
                 <%= link_to request_path(request) do %>
                   <%= request.painting.name %>
@@ -51,7 +53,9 @@
           <% end %>
         </tbody>
       </table>
-<p><%= link_to 'Back', paintings_path, class: 'btn btn-secondary my-3' %></p>
+    </div>
+<p><%= link_to 'Home', paintings_path, class: 'btn btn-secondary my-3' %></p>
     </div>
   </div>
+</div>
 </div>
