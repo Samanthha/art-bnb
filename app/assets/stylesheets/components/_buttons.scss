@@ -1,7 +1,8 @@
 .btn-primary {
+  font-family: "Work Sans", "Helvetica", "sans-serif";
   color: #4A4A4A;
   background: #1EDD88;
-  border: 0px solid #4A4A4A;
+  border: none;
   padding: 8px 24px;
   border-radius: 50px;
   font-weight: lighter;
@@ -11,11 +12,11 @@
 .btn-primary:hover {
   color: white;
   background: #1BCB7F;
-  // border: 1px solid #4A4A4A;
 }
 
 
 .btn-secondary {
+  font-family: "Work Sans", "Helvetica", "sans-serif";
   color: #4A4A4A;
   background-color: white;
   border: 1px solid #4A4A4A;
