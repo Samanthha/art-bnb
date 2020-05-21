@@ -12,6 +12,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'faker'
 # User login management
 gem 'devise'
+gem 'pundit'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
