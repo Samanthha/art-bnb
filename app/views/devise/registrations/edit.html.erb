@@ -14,6 +14,18 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                required: false,
+                input_html: { autocomplete: "First name" } %>
+    <%= f.input :last_name,
+                required: false,
+                input_html: { autocomplete: "Last name" } %>
+    <div class="form-group">
+    <%= f.label "Profile picture" %>
+    <%= f.file_field :photo,
+                required: false,
+                input_html: { autocomplete: "Last name" } %>          
+    </div>            
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -22,7 +34,7 @@
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "We need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
