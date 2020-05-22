@@ -20,24 +20,28 @@
         <li><i class="fas fa-tag"></i> Price per day:<span style="color: gray"> $<%= @request.painting.price_per_day %></span></li>
         <li><i class="fas fa-map-marker-alt mb-5"></i> Location:<span style="color: gray"> <%= @request.painting.location %></span></li>
         <li class="ml-5">
-          <div class="d-flex justify-content-between align-items-center">
+
+        <div class="d-flex justify-content-between align-items-center">
           <%= link_to 'View Painting Info', painting_path(@request.painting), class: 'btn btn-secondary mr-5' %>
-          <% if @request.pending? %>
-            <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: "Accepted" %>
-              <%= f.submit 'Accept', class: "btn btn-success mr-3" %>
-            <% end %>
-            <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
-              <%= f.hidden_field :status, value: "Declined" %>
-              <%= f.submit 'Decline', class: "btn btn-danger mr-3" %>
-            <% end %>
-          <% elsif @request.accepted? %>
-              <span class="green-text font-weight-bold"><%= @request.status %></span>
-          <% elsif @request.declined? %>
-              <span class="red-text font-weight-bold"><%= @request.status %></span>
-          <% elsif @request.status == "Pending..." %>
-              <span style="color: gray" class="font-weight-bold"><%= @request.status %></span>
-          <% end %></li>
+
+          <%# if policy(@request).incoming? %>
+            <% if @request.pending? %>
+              <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
+                <%= f.hidden_field :status, value: "Accepted" %>
+                <%= f.submit 'Accept', class: "btn btn-success mr-3" %>
+              <% end %>
+              <%= form_for @request, url: update_request_path(@request), method: :patch do |f| %>
+                <%= f.hidden_field :status, value: "Declined" %>
+                <%= f.submit 'Decline', class: "btn btn-danger mr-3" %>
+              <% end %>
+            <% elsif @request.accepted? %>
+                <span class="green-text font-weight-bold"><%= @request.status %></span>
+            <% elsif @request.declined? %>
+                <span class="red-text font-weight-bold"><%= @request.status %></span>
+            <% elsif @request.status == "Pending..." %>
+                <span style="color: gray" class="font-weight-bold"><%= @request.status %></span>
+            <% end %></li>
+          <%# end %>
         </div>
       </ul>
     </div>
