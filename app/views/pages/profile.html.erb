@@ -5,7 +5,7 @@
       <div class="card-info shadow" style="background: #333; color: #eee">
         <div class="text-center">
       <% if current_user.photo.attached? %>
-        <%= cl_image_tag current_user.photo.key, class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+        <%= cl_image_tag url_for(current_user.photo), class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
       <% else %>
         <%= cl_image_tag "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589987704/art-bnb/default_icon_c0dy7j.png", class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
       <% end %>

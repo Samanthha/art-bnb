@@ -21,7 +21,7 @@
 
           <% if current_user.photo.attached? %>
 
-            <%= cl_image_tag current_user.photo.key, class: "ml-2 border avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag url_for(current_user.photo), class: "ml-2 border avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
           <% else %>
 
