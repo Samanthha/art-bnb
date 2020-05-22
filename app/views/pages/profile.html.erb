@@ -22,10 +22,11 @@
           <div class="user-currently-rented">
             <h3>Currently rented paintings</h3>
 
-            <%= @current_requests.each do |request| %>
+            
+            <% @current_requests.each do |request| %>
             <% painting = request.painting %>
-            <div class="card-product">
-              <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-product card-product-painting">
+              <%= cl_image_tag painting.photo.key, crop: :fill %>
               <div class="card-product-infos">
                 <h2> <%= painting.name %> </h2>
                 <p> <%= request.start_date %> to <%= request.end_date %> </p>
