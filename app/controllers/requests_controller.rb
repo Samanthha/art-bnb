@@ -1,4 +1,6 @@
 class RequestsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:incoming, :outgoing]
+
   def new
     @painting = Painting.find(params[:painting_id])
     @request = Request.new
@@ -35,14 +37,12 @@ class RequestsController < ApplicationController
 
   def incoming
     paintings = current_user.paintings
-    authorize @request
     array = paintings.map { |painting| painting.requests }
     @requests = array.flatten
   end
 
   def outgoing
     @requests = Request.where(user: current_user)
-    authorize @request
   end
 
   def show
