@@ -1,11 +1,12 @@
 <div class="p-5">
 
-<h1 class= "mb-3"><%= link_to '< back', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %><%= @painting.name %></h1>
+<h1 class= "mb-4"><%= link_to '<⠀home', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %><%= @painting.name %></h1>
 
 <div class="flex-container">
 <div class="card-painting d-flex align-items-start flex-column">
   <div class="mb-3">
     <div>
+
       <% if policy(@painting).edit? %>
         <%= link_to 'edit', edit_painting_path(@painting), class: 'btn btn-secondary' %>
       <% end %>
@@ -17,6 +18,7 @@
       <%# if policy(@request).incoming? %>
         <%#= link_to 'view requests', incoming_requests_path, class: 'btn btn-secondary ml-2' %>
       <%# end %>
+                    
     </div>
   </div>
 <div class="flex-container pr-4">
