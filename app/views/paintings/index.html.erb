@@ -17,7 +17,7 @@
       <% @paintings.each do |painting| %>
         <div class="grid-item">
           <%= link_to painting_path(painting), class: "card-product" do %>
-          <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
+          <%=  cl_image_tag url_for(painting.photo), height: 300, width: 400, crop: :fill %>
 
             <ul class="card-product-infos">
               <li><h2><%= painting.name %></h2></li>

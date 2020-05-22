@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_one_attached :photo, dependent: :destroy
   validates :first_name, length: { minimum: 3 }
   validates :last_name, length: { minimum: 3 }
+  validates :last_name, length: { maximum: 10 }
+  validates :first_name, length: { maximum: 10 }
   
   def name
     "#{first_name} #{last_name}"

@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h1 class= "mb-4"><%= link_to '<⠀Home', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>Outgoing requests:</h1>
+      <h1 class= "mb-4"><%= link_to '< Home', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %>Outgoing requests:</h1>
       <div style="background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 8px; padding: 14px 24px 8px 24px">
     <table class="table table-hover table-light">
         <thead>
@@ -10,35 +10,41 @@
            <th scope="col">Painting</th>
             <th scope="col">From</th>
             <th scope="col">To</th>
-            <th scope="col">Status</th>
+            <th scope="col"></th>
            </tr>
         </thead>
         <tbody>
           <% @requests.each do |request| %>
           <tr>
             <td>
+              <p class="mt-3">
               <%= link_to request_path(request) do %>
                 <%= request.painting.name %>
               <% end %>
+              </p>
             </td>
             <td>
+              <p class="mt-3">
               <%= request.start_date %>
+              </p>
             </td>
             <td>
+              <p class="mt-3">
               <%= request.end_date %>
+              </p>
             </td>
             <td>
               <% if request.pending? %>
                 <div class="d-flex justify-content align-items-center">
                 <%= form_for request, url: update_request_path(request), method: :patch do |f| %>
                   <%= f.hidden_field :status, value: "Cancelled" %>
-                  <%= f.submit 'Cancel', class: "btn btn-danger my-3 ml-3" %>
+                  <%= f.submit 'Cancel', class: "btn btn-danger my-2 ml-3" %>
                 <% end %>
                 </div>
               <% elsif request.accepted? %>
-                    <span class="green-text font-weight-bold"><%= request.status %></span>
+                    <span class="green-text font-weight-bold mt-3"><%= request.status %></span>
               <% elsif request.declined? or request.cancelled? %>
-                    <span class="red-text font-weight-bold"><%= request.status %></span>
+                    <span class="red-text font-weight-bold mt-3"><%= request.status %></span>
               <% end %>
             </td>
           </tr>
