@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:incoming, :outgoing, :create, :new]
+  skip_after_action :verify_authorized, only: [:incoming, :outgoing, :create, :new, :update]
 
   def new
     @painting = Painting.find(params[:painting_id])

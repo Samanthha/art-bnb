@@ -2,7 +2,6 @@ class RequestPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
-      # scope.where(user: user)
     end
   end
 
@@ -15,7 +14,7 @@ class RequestPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.user == user || record.painting.user == user
   end
 
   def incoming?
