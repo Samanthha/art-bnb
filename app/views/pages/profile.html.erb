@@ -36,18 +36,18 @@
             <h2 class="mt-5 mb-3">Currently renting:</h2>
 
 
-            <% @current_requests.each do |request| %>
-            <%= link_to request_path(request), style: "text-decoration: none" do %>
+            <% current_user.requests.each do |request| %>
+                      <%= link_to request_path(request), style: "text-decoration: none" do %>
 
-            <% painting = request.painting %>
-            <div class="card-product card-product-painting">
-              <%= cl_image_tag url_for(painting.photo), crop: :fill %>
-              <div class="card-product-infos">
-                <h2> <%= painting.name %> </h2>
-                <p> <%= request.start_date %> to <%= request.end_date %> </p>
-              </div>
-            </div>
-          <% end %>
+                      <% painting = request.painting %>
+                      <div class="card-product card-product-painting">
+                        <%= cl_image_tag url_for(painting.photo), crop: :fill %>
+                        <div class="card-product-infos">
+                          <h2> <%= painting.name %> </h2>
+                          <p> <%= request.start_date %> to <%= request.end_date %> </p>
+                        </div>
+                      </div>
+                    <% end %>
           <% end %>
           </div>
           <% end %>
