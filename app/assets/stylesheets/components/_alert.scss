@@ -6,22 +6,26 @@
 }
 
 .flash {
-  padding: 8px 20px;
+  padding: 4px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: #1D8A99;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  border-radius: 15px;
+  border-radius: 20px;
   margin: 8px;
 }
 
 .flash-success {
-  border: 2px solid #1EDD88;
+  border: 1px solid rgba(140,140,140,1);
+  background: #1D8A99;
+  color: white;
 }
 
 .flash-warning {
-  border: 2px solid #FFC65A;
+  background: #E2C044;
+  border: 1px solid rgba(140,140,140,1);
+  color: white;
 }
 
 .fa-times {
