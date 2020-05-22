@@ -1,31 +1,65 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="background: #F4F4F4">
 
     <div class="col-3">
-      <div class="card-info">
+      <div class="card-info shadow" style="background: #333; color: #eee">
         <div class="text-center">
-      <%= image_tag "profile pic.jpg", class: "my-avatar", alt: "avatar-large" %>
-      </div>
-      <h1> <%= @user.name %> </h1>
-        <p> <i class="far fa-image"> <%= @user.paintings.length %> Paintings</i></p>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+      <% else %>
+        <%= cl_image_tag "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589987704/art-bnb/default_icon_c0dy7j.png", class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+      <% end %>
+      <h1 class="pb-4"> <%= @user.name %> </h1>
+        <p> <i class="far fa-image mt-3"> <%= @user.paintings.length %> Paintings</i></p>
         <p> <i class="fas fa-map-marker-alt"></i> Montreal </p>
-        <p> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> </p>
+        <p> <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-secondary mt-5" %></p>
+        <p> <%= link_to "Incoming requests", incoming_requests_path, class: "btn btn-primary mt-3" %></p>
+        <p> <%= link_to "Outgoing requests", outgoing_requests_path, class: "btn btn-primary mt-1" %></p>
+        <p> <%= link_to "Add a Painting", new_painting_path, class: "btn btn-secondary mt-3 mb-3" %></p>
+
       </div>
+    </div>
     </div>
 
     <div class="col-9">
       <div class="user-details">
-        <h1>Hello, I'm Barbara</h1>
-          <h2>About me</h2>
+        <h1>Hello, I'm <%= current_user.first_name.capitalize %></h1>
+          <h2 class="mt-5 mb-3">About me</h2>
           <div class="bio">
             <p>I'm a lawyer living in Montreal, the city I chose to enjoy many winters. I have some paintings I inherited from my family and they are now available for you to rent.</p>
           </div>
+
+
+          <% if @current_requests.length > 0 %>
+
+          <div class="user-currently-rented">
+            <h2 class="mt-5 mb-3">Currently renting:</h2>
+            <% @current_requests.each do |request| %>
+            <% painting = request.painting %>
+            <div class="card-product card-product-painting">
+              <%= cl_image_tag painting.photo.key, crop: :fill %>
+              <div class="card-product-infos">
+                <h2> <%= painting.name %> </h2>
+                <p> <%= request.start_date %> to <%= request.end_date %> </p>
+              </div>
+
+            </div>
+          </div>
+          <% end %>
+
+          <% end %>
+
+
+
+          <% if @user.paintings.length > 0 %>
+
           <div class="user-paintings">
+            <h2 class="mt-5 mb-3">My paintings:</h2>
           <div class="grid">
             <% @user.paintings.each do |painting| %>
               <div class="grid-item">
                 <%= link_to painting_path(painting), class: "card-product" do %>
-                <%= cl_image_tag painting.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag painting.photo.key, height: 100, width: 200, crop: :fill %>
 
                   <ul class="card-product-infos">
                     <li><h2><%= painting.name %></h2></li>
@@ -34,15 +68,15 @@
                     <li><i class="fas fa-map-marker-alt"></i> <%= painting.location %></li>
                     <li><i class="fas fa-tag"></i> $<%= painting.price_per_day %> per day</li>
                   </ul>
+
                 <% end %>
               </div>
             <% end %>
             </div>
             </div>
-          </div>
-          </div>
-      </div>
-    </div>
 
-  </div>
+            <% end %>
+</div>
+</div>
+</div>
 </div>

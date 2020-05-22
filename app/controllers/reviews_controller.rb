@@ -1,11 +1,15 @@
 class ReviewsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:new, :create]
+
   def new
     @painting = Painting.find(params[:painting_id])
+    # authorize @review
     @review = Review.new
   end
 
   def create
     @painting = Painting.find(params[:painting_id])
+    # authorize @review
     @review = Review.new(review_params)
     @review.painting = @painting
     @review.user = current_user

@@ -6,11 +6,12 @@ class User < ApplicationRecord
   has_many :paintings, dependent: :destroy
   has_many :reviews
   has_many :requests, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
   validates :first_name, length: { minimum: 3 }
   validates :last_name, length: { minimum: 3 }
-
+  
   def name
     "#{first_name} #{last_name}"
   end
-  
+
 end

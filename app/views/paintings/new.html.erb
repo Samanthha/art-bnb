@@ -3,7 +3,7 @@
 <h1 class= "my-5">Add a painting:</h1>
 
 <div style= "width: 300px">
-<%= simple_form_for(@painting) do |f| %>
+<%= simple_form_for @painting, remote: true do |f| %>
   <%= f.input :photo, as: :file %>
   <%= f.input :name, label: "Name of painting", placeholder: "example: Starry Night" %>
   <%= f.input :dimensions, label: "Dimensions (in cm)", placeholder: "74 cm x 92 cm" %>
@@ -12,7 +12,7 @@
   <%= f.input :location, placeholder: "City name" %>
   <%= f.input :price_per_day, placeholder: "Price in canadian dollars" %>
   <%= f.button :submit, 'Save', class: "btn btn-primary my-3"%>
-  <%= link_to 'Cancel', paintings_path, class: 'btn btn-secondary my-3' %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-secondary my-3' %>
 <% end %>
 </div>
 
