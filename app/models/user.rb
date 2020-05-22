@@ -6,9 +6,10 @@ class User < ApplicationRecord
   has_many :paintings, dependent: :destroy
   has_many :reviews
   has_many :requests, dependent: :destroy
+  has_one_attached :photo, dependent: :destroy
 
   def name
     "#{first_name} #{last_name}"
   end
-  
+
 end

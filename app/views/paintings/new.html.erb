@@ -3,7 +3,7 @@
 <h1 class= "my-5">Add a painting:</h1>
 
 <div style= "width: 300px">
-<%= simple_form_for(@painting) do |f| %>
+<%= simple_form_for @painting, remote: true do |f| %>
   <%= f.input :photo, as: :file %>
   <%= f.input :name, label: "Name of painting", placeholder: "example: Starry Night" %>
   <%= f.input :dimensions, label: "Dimensions (in cm)", placeholder: "74 cm x 92 cm" %>
