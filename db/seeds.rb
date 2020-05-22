@@ -1,10 +1,25 @@
 require "open-uri"
 
-# Generate users if there isn't some already
-User.new(email: "solene@email.com", password: "123456").save
-User.new(email: "daniela@email.com", password: "123456").save
-User.new(email: "celine@email.com", password: "123456").save
-User.new(email: "samantha@email.com", password: "123456").save
+# Destroying all past paintings
+Painting.destroy_all
+puts "> destroyed all paintings"
+
+# Deletes all users
+ActiveRecord::Base.connection.execute("DELETE FROM users")
+puts "> destroyed all users"
+
+
+# Generate users
+User.new(email: "solene@email.com", password: "123456", first_name: "Solene", last_name: "Duprat").save
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161778/solene.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.new(email: "daniela@email.com", password: "123456", first_name: "Daniela", last_name: "Santana").save
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.new(email: "celine@email.com", password: "123456", first_name: "Celine", last_name: "Rondeau").save
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161759/celine.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.new(email: "samantha@email.com", password: "123456", first_name: "Samantha", last_name: "André").save
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+puts "> generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com"
+puts "> attached profile pictures to users"
 
 # Getting ready to attach image to paintings
 counter = 0
@@ -25,9 +40,6 @@ def attach_image (painting, counter)
   painting.photo.attach(io: file, filename: "painting#{counter}.jpg", content_type: 'image/jpg')
 end
 
-# Destroying all past paintings
-Painting.destroy_all
-
 # Generate paintings and attach image
 User.all.each do |user|
   3.times do
@@ -44,6 +56,8 @@ User.all.each do |user|
     counter += 1
   end
 end
+puts "> gave each user 3 paintings"
+puts "> attached pictures to paintings"
 
 # Generate reviews for paintings
 Painting.all.each do |painting|
@@ -58,3 +72,4 @@ Painting.all.each do |painting|
       )
   end
 end
+puts "> generated random reviews"

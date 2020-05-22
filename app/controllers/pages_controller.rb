@@ -6,4 +6,5 @@ class PagesController < ApplicationController
     @user = current_user
     @paintings = Painting.where(user: current_user)
   end
+  
 end
