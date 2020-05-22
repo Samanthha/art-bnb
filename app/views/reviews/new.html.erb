@@ -1,12 +1,13 @@
-<div class="p-4">
-<h1>Did you enjoy <%= @painting.name %>?</h1>
-<p>Leave a review and let us know</p>
+<div class="p-5">
+<h1 class="mb-3">Did you enjoy <%= @painting.name %>?</h1>
+<p class="mb-5">Leave a review and let us know</p>
 
+<div style="width: 300px">
 <%= simple_form_for([@painting, @review]) do |f| %>
   <%= f.input :rating, :collection => %w[0 1 2 3 4 5] %>
-  <%= f.input :content %>
+  <%= f.input :content, label: "Write a comment" %>
   <%= f.button :submit, class: "btn btn-primary mt-3"%>
+  <%= link_to "Cancel", painting_path(@painting), class: "btn btn-secondary mt-3" %>
 <% end %>
-<br />
-<%= link_to "Cancel", painting_path(@painting), class: "btn btn-secondary" %>
+</div>
 </div>

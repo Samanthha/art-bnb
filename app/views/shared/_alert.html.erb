@@ -1,17 +1,17 @@
 <% if notice %>
-<div class="flash flash-success alert alert-dismissible fade show" role="alert">
-  <span><%= notice %></span>
+<div class="flash flash-success alert alert-dismissible fade show" style="background-color: #cffad0" role="alert">
+  <span class="p-2"><%= notice %></span>
   <a data-dismiss="alert" aria-label="Close">
-    <i class="fas fa-times"></i>
+    <i class="fas fa-times ml-5"></i>
   </a>
 </div>
 <% end %>
 
 <% if alert %>
-<div class="flash flash-warning alert alert-dismissible fade show" role="alert">
-  <span><%= alert %></span>
+<div class="flash flash-warning alert alert-dismissible fade show" style="background-color: #fae8cf" role="alert">
+  <span class="p-2"><%= alert %></span>
   <a data-dismiss="alert" aria-label="Close">
-    <i class="fas fa-times"></i>
+    <i class="fas fa-times ml-5"></i>
   </a>
 </div>
 <% end %>
