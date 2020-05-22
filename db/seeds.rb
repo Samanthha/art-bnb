@@ -13,11 +13,11 @@ puts "> destroyed all users"
 User.new(email: "solene@email.com", password: "123456", first_name: "Solene", last_name: "Duprat").save
 User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161778/solene.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
 User.new(email: "daniela@email.com", password: "123456", first_name: "Daniela", last_name: "Santana").save
-User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "daniela.jpg", content_type: 'image/jpg')
 User.new(email: "celine@email.com", password: "123456", first_name: "Celine", last_name: "Rondeau").save
-User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161759/celine.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161759/celine.jpg"), filename: "celine.jpg", content_type: 'image/jpg')
 User.new(email: "samantha@email.com", password: "123456", first_name: "Samantha", last_name: "André").save
-User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
+User.last.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
 puts "> generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com"
 puts "> attached profile pictures to users"
 
