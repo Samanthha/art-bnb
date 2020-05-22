@@ -28,11 +28,14 @@
           <div class="bio">
             <p>I'm a lawyer living in Montreal, the city I chose to enjoy many winters. I have some paintings I inherited from my family and they are now available for you to rent.</p>
           </div>
+
+
+          <% if @user.requests.where(status: "Accepted").length > 0 %>
+
           <div class="user-currently-rented">
             <h3>Currently rented paintings</h3>
 
-            
-            <% @current_requests.each do |request| %>
+            <% @current_requests.where(status:"Accepted").each do |request| %>
             <% painting = request.painting %>
             <div class="card-product card-product-painting">
               <%= cl_image_tag painting.photo.key, crop: :fill %>
@@ -40,15 +43,17 @@
                 <h2> <%= painting.name %> </h2>
                 <p> <%= request.start_date %> to <%= request.end_date %> </p>
               </div>
-              
+
             </div>
           </div>
           <% end %>
           </div>
 
+          <% end %>
+
+
           <% if @user.paintings.length > 0 %>
 
-          
           <div class="user-paintings">
             <h2 class="mt-5 mb-3">My paintings:</h2>
           <div class="grid">
@@ -72,36 +77,3 @@
             </div>
 
             <% end %>
-
-          <% if @user.requests.where(status: "Accepted").length > 0 %>
-
-            <h2 class="mt-5 mb-3">Currently Renting:</h2>
-          <div class="user-paintings">
-          <div class="grid">
-            <% @user.requests.where(status: "Accepted").each do |request| %>
-              <div class="grid-item">
-                <%= link_to painting_path(request.painting), class: "card-product" do %>
-                <%= cl_image_tag request.painting.photo.key, height: 300, width: 400, crop: :fill %>
-
-                  <ul class="card-product-infos">
-                    <li><h2><%= request.painting.name %></h2></li>
-                    <li><i class="fas fa-palette"></i> <%= request.painting.painter %></li>
-                    <li><i class="fas fa-tape"></i> <%= request.painting.dimensions %></li>
-                    <li><i class="fas fa-map-marker-alt"></i> <%= request.painting.location %></li>
-                    <li><i class="fas fa-tag"></i> $<%= request.painting.price_per_day %> per day</li>
-                  </ul>
-
-                <% end %>
-              </div>
-            <% end %>
-            </div>
-            </div>
-
-            <% end %>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
