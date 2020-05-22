@@ -5,7 +5,7 @@ class Painting < ApplicationRecord
   has_many :reviews, dependent: :destroy
   validates :photo, presence: true
   validates :name, presence: true
-  validates :name, length: { maximum: 10 }
+  validates :name, length: { maximum: 16 }
   validates :painter, presence: true
   validates :category, presence: true
   validates :location, presence: true
