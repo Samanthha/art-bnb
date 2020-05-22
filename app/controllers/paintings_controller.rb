@@ -36,6 +36,7 @@ class PaintingsController < ApplicationController
 
   def update
     @painting.update(painting_params)
+    @painting.photo.attach(painting_params[:photo])
     authorize @painting
     redirect_to painting_path(@painting)
   end
