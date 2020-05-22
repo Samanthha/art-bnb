@@ -1,11 +1,15 @@
 class RequestsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:incoming, :outgoing]
+
   def new
     @painting = Painting.find(params[:painting_id])
     @request = Request.new
+    authorize @request
   end
 
   def create
     @painting = Painting.find(params[:painting_id])
+    authorize @request
     @request = Request.new(request_params)
     @request.status = "Pending..."
     @request.painting = @painting
@@ -19,11 +23,12 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    authorize @request
     # if status one of a/d/c
     if ["Accepted", "Declined", "Cancelled"].include?(status_params[:status])
       @request.status = status_params[:status]
       @request.save!
-    # else 
+    # else
       # display error message
     end
     session[:return_to] = request.referer
@@ -42,6 +47,7 @@ class RequestsController < ApplicationController
 
   def show
     @request = Request.find(params[:id])
+    authorize @request
   end
 
   private

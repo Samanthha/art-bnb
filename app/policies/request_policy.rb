@@ -1,11 +1,12 @@
-class PaintingPolicy < ApplicationPolicy
+class RequestPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
+      # scope.where(user: user)
     end
   end
 
-  def show?
+  def new?
     true
   end
 
@@ -17,11 +18,15 @@ class PaintingPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def destroy?
-    record.user == user
+  def incoming?
+    true
   end
 
-  def delete?
+  def outgoing?
+    true
+  end
+
+  def show?
     record.user == user
   end
 end

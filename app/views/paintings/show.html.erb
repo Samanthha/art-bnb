@@ -1,14 +1,24 @@
 <div class="p-5">
 
-<h1 class= "mb-4"><%= link_to '<⠀Home', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %><%= @painting.name %></h1>
+<h1 class= "mb-4"><%= link_to '<⠀home', paintings_path, class: 'btn btn-secondary ml-2 mr-4 mb-1' %><%= @painting.name %></h1>
 
 <div class="flex-container">
 <div class="card-painting d-flex align-items-start flex-column">
   <div class="mb-3">
     <div>
-      <%= link_to 'Edit', edit_painting_path(@painting), class: 'btn btn-secondary' %>
-      <%= link_to 'Delete', delete_painting_path(@painting), class: 'btn btn-secondary ml-2' %>
-      <%= link_to 'View requests', incoming_requests_path, class: 'btn btn-secondary ml-2' %>
+
+      <% if policy(@painting).edit? %>
+        <%= link_to 'edit', edit_painting_path(@painting), class: 'btn btn-secondary' %>
+      <% end %>
+
+      <% if policy(@painting).delete? %>
+        <%= link_to 'delete', delete_painting_path(@painting), class: 'btn btn-secondary ml-2' %>
+      <% end %>
+
+      <%# if policy(@request).incoming? %>
+        <%#= link_to 'view requests', incoming_requests_path, class: 'btn btn-secondary ml-2' %>
+      <%# end %>
+                    
     </div>
   </div>
 <div class="flex-container pr-4">
@@ -19,8 +29,13 @@
       <li><i class="fas fa-copyright"></i> <%= @painting.category %></li>
       <li><i class="fas fa-map-marker-alt"></i> <%= @painting.location %></li>
       <li><i class="fas fa-tag"></i> $<%= @painting.price_per_day %> per day</li>
-      <li><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-primary mt-5" %>
-      <%= link_to "Write a review", new_painting_review_path(@painting), class: "btn btn-secondary mt-5 ml-2" %></li>
+      <% if @painting.user != current_user %>
+        <li><%= link_to "Rent this painting", new_painting_request_path(@painting), class: "btn btn-primary mt-5" %>
+      <% end %>
+
+      <% if @painting.user != current_user %>
+        <%= link_to "Write a review", new_painting_review_path(@painting), class: "btn btn-secondary mt-5 ml-2" %></li>
+      <% end %>
     </ul>
 
   </div></div></div>
