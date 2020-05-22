@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row" style="background: #F4F4F4">
 
     <div class="col-3">
       <div class="card-info shadow" style="background: #333; color: #eee">
@@ -30,12 +30,11 @@
           </div>
 
 
-          <% if @user.requests.where(status: "Accepted").length > 0 %>
+          <% # if current_requests.length > 0 %>
 
           <div class="user-currently-rented">
-            <h3>Currently rented paintings</h3>
-
-            <% @current_requests.where(status:"Accepted").each do |request| %>
+            <h2 class="mt-5 mb-3">Currently renting:</h2>
+            <% @current_requests.each do |request| %>
             <% painting = request.painting %>
             <div class="card-product card-product-painting">
               <%= cl_image_tag painting.photo.key, crop: :fill %>
@@ -47,9 +46,9 @@
             </div>
           </div>
           <% end %>
-          </div>
 
-          <% end %>
+          <% # end %>
+
 
 
           <% if @user.paintings.length > 0 %>
@@ -77,3 +76,7 @@
             </div>
 
             <% end %>
+</div>
+</div>
+</div>
+</div>
