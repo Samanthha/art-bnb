@@ -4,7 +4,7 @@
 
   <div class="flex-container">
   <div class="card-painting">
-    <div class="flex-container justify-content pr-4" style="width: 950px">
+    <div class="flex-container justify-content pr-4" style="width: 775px">
       <%= cl_image_tag url_for(@painting.photo), height: 300, width: 400, crop: :fill, class: "pl-4" %>
       <ul>
         <li><i class="fas fa-palette"></i> Painter:<span style="color: gray"> <%= @painting.painter %></span></li>
@@ -29,9 +29,6 @@
         </div>
         </li>
       </ul>
-    </div>
-    <div style="background:gray; height: 300px; width: 300px; margin-right: 30px">
-      <h1 class="py-5 px-5 my-5 my-5" style="color: white">Map</h1>
     </div>
   </div>
 </div>
