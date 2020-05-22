@@ -41,7 +41,7 @@
 
             <% painting = request.painting %>
             <div class="card-product card-product-painting">
-              <%= cl_image_tag painting.photo.key, crop: :fill %>
+              <%= cl_image_tag url_for(painting.photo), crop: :fill %>
               <div class="card-product-infos">
                 <h2> <%= painting.name %> </h2>
                 <p> <%= request.start_date %> to <%= request.end_date %> </p>
@@ -63,7 +63,7 @@
             <% @user.paintings.each do |painting| %>
               <div class="grid-item">
                 <%= link_to painting_path(painting), class: "card-product" do %>
-                <%= cl_image_tag painting.photo.key, height: 100, width: 200, crop: :fill %>
+                <%= cl_image_tag url_for(painting.photo), height: 100, width: 200, crop: :fill %>
 
                   <ul class="card-product-infos">
                     <li><h2><%= painting.name %></h2></li>
