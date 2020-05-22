@@ -42,12 +42,12 @@ class RequestsController < ApplicationController
 
   def outgoing
     @requests = Request.where(user: current_user)
-    # authorize @request
+    authorize @request
   end
 
   def show
     @request = Request.find(params[:id])
-    # authorize @request
+    authorize @request
   end
 
   private
