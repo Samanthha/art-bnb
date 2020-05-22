@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:new, :create]
+  skip_after_action :verify_authorized, only: [:new, :create, :update]
 
   def new
     @painting = Painting.find(params[:painting_id])
