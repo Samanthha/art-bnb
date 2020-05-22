@@ -1,15 +1,15 @@
 class RequestsController < ApplicationController
-  skip_after_action :verify_authorized, only: [:incoming, :outgoing]
+  skip_after_action :verify_authorized, only: [:incoming, :outgoing, :create, :new]
 
   def new
     @painting = Painting.find(params[:painting_id])
     @request = Request.new
-    authorize @request
+    # authorize @request
   end
 
   def create
     @painting = Painting.find(params[:painting_id])
-    authorize @request
+    # authorize @request
     @request = Request.new(request_params)
     @request.status = "Pending..."
     @request.painting = @painting
