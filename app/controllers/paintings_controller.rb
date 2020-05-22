@@ -48,8 +48,9 @@ class PaintingsController < ApplicationController
 
   def delete
     @paintings = Painting.all
-    authorize @painting
-    @painting = Painting.find(params[:id])
+    set_painting
+    # authorize @painting
+    # @painting = Painting.find(params[:id])
   end
 
   private

@@ -35,18 +35,19 @@ class RequestsController < ApplicationController
 
   def incoming
     paintings = current_user.paintings
+    authorize @request
     array = paintings.map { |painting| painting.requests }
     @requests = array.flatten
   end
 
   def outgoing
     @requests = Request.where(user: current_user)
-    authorize @request
+    # authorize @request
   end
 
   def show
     @request = Request.find(params[:id])
-    authorize @request
+    # authorize @request
   end
 
   private
