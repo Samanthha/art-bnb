@@ -6,13 +6,16 @@ ruby '2.6.6'
 
 # Protect secret cloudinary code:
 gem 'dotenv-rails', groups: [:development, :test]
-# Cloudinary
+# Cloudinary:
 gem 'cloudinary', '~> 1.12.0'
-# Seed faker
+# Seed faker:
 gem 'faker'
-# User login management
+# User login management:
 gem 'devise'
+# Authorizations:
 gem 'pundit'
+# Turbo link render:
+gem 'turbolinks_render'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
