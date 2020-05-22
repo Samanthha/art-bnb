@@ -3,7 +3,7 @@
 <p class="mb-5">Leave a review and let us know</p>
 
 <div style="width: 300px">
-<%= simple_form_for([@painting, @review]) do |f| %>
+<%= simple_form_for [@painting, @review], remote: true do |f| %>
   <%= f.input :rating, :collection => %w[0 1 2 3 4 5] %>
   <%= f.input :content, label: "Write a comment" %>
   <%= f.button :submit, class: "btn btn-primary mt-3"%>

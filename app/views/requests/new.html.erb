@@ -1,7 +1,7 @@
 <div class="p-5">
 <h1>Send a request to rent <%= @painting.name %></h1>
 
-<%= simple_form_for([@painting, @request]) do |f| %>
+<%= simple_form_for [@painting, @request], remote: true do |f| %>
   <%= f.input :start_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, input_html: { min: Date.today.to_s, value: Date.today.to_s } %>
   <%= f.input :end_date, as: :date, start_year: Date.today.year, order: [:day, :month, :year], html5: true, input_html: { min: Date.today.to_s, value: Date.today.to_s } %>
   <%= f.button :submit, class: "btn btn-primary mt-3"%>

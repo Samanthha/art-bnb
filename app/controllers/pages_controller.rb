@@ -8,4 +8,5 @@ class PagesController < ApplicationController
     @current_requests = Request.where(painting: @user.paintings)
     
   end
+  
 end
