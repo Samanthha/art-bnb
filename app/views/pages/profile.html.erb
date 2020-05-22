@@ -4,7 +4,11 @@
     <div class="col-3">
       <div class="card-info shadow" style="background: #333; color: #eee">
         <div class="text-center">
-      <%= cl_image_tag current_user.photo.key, class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+      <% else %>
+        <%= cl_image_tag "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589987704/art-bnb/default_icon_c0dy7j.png", class: "my-avatar mb-4 mt-3", style: "border: 2px solid #eee", alt: "avatar-large", crop: :fill %>
+      <% end %>
       <h1 class="pb-4"> <%= @user.name %> </h1>
         <p> <i class="far fa-image mt-3"> <%= @user.paintings.length %> Paintings</i></p>
         <p> <i class="fas fa-map-marker-alt"></i> Montreal </p>
@@ -51,12 +55,12 @@
 
             <% end %>
 
-          <% if @user.requests.length > 0 %>
+          <% if @user.requests.where(status: "Accepted").length > 0 %>
 
             <h2 class="mt-5 mb-3">Currently Renting:</h2>
           <div class="user-paintings">
           <div class="grid">
-            <% @user.requests.each do |request| %>
+            <% @user.requests.where(status: "Accepted").each do |request| %>
               <div class="grid-item">
                 <%= link_to painting_path(request.painting), class: "card-product" do %>
                 <%= cl_image_tag request.painting.photo.key, height: 300, width: 400, crop: :fill %>
